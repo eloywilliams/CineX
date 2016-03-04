@@ -1,5 +1,6 @@
 from PyQt4 import QtCore
 
+
 class Estado(QtCore.QState):
 
     def __init__(self):

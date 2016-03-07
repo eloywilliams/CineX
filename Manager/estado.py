@@ -15,13 +15,15 @@ class Estado(QtCore.QState):
 class Pelicula(Estado):
 
     def __init__(self):
-        Estado.__init__()
+        Estado.__init__(self)
 
     def into(self):
         pass
 
     def leave(self):
-        pass
+        archivo = open("Manager/ticket.txt", "w")
+        archivo.write("EL SECRETO DE SUS OJOS\n")
+        archivo.close()
 
 class Dia(Estado):
 

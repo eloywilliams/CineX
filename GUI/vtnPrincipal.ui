@@ -54,7 +54,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="boton_hab_mic">
+      <widget class="QPushButton" name="boton_rec">
        <property name="text">
         <string>Rec</string>
        </property>

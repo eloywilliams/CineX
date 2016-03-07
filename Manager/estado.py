@@ -1,10 +1,14 @@
 from PyQt4 import QtCore
 
+from ASR import Reconocedor
 
 class Estado(QtCore.QState):
 
-    def __init__(self):
+    def __init__(self, ok):
         QtCore.QState.__init__(self)
+        self.ok = ok
+        self.cadena = ""
+        self.reconocedor = Reconocedor(self.ok)
 
     def into(self):
         pass
@@ -14,46 +18,55 @@ class Estado(QtCore.QState):
 
 class Pelicula(Estado):
 
-    def __init__(self):
-        Estado.__init__(self)
+    def __init__(self, ok):
+        Estado.__init__(self, ok)
 
     def into(self):
-        pass
+        print "pelicula"
+        self.cadena = self.reconocedor.obtenerEntrada()
 
     def leave(self):
         archivo = open("Manager/ticket.txt", "w")
-        archivo.write("EL SECRETO DE SUS OJOS\n")
+        archivo.write(self.cadena + "\n")
         archivo.close()
 
 class Dia(Estado):
 
-    def __init__(self):
-        Estado.__init__()
+    def __init__(self, ok):
+        Estado.__init__(self, ok)
 
     def into(self):
-        pass
+        print "dia"
+        self.reconocedor.GRAMM = '/home/waldo/Documentos/Universidad/ProcVoz/asr-pocketsphinx-spanish/pruebas/dias'
+        self.cadena = self.reconocedor.obtenerEntrada()
 
     def leave(self):
-        pass
+        archivo = open("Manager/ticket.txt", "a")
+        archivo.write(self.cadena + "\n")
+        archivo.close()
 
 class Horario(Estado):
 
-    def __init__(self):
-        Estado.__init__()
+    def __init__(self, ok):
+        Estado.__init__(self, ok)
 
     def into(self):
-        pass
+        print "horario"
+        self.reconocedor.GRAMM = '/home/waldo/Documentos/Universidad/ProcVoz/asr-pocketsphinx-spanish/pruebas/horarios'
+        self.cadena = self.reconocedor.obtenerEntrada()
 
     def leave(self):
-        pass
+        archivo = open("Manager/ticket.txt", "a")
+        archivo.write(self.cadena + "\n")
+        archivo.close()
 
 class Confirmar(Estado):
 
-    def __init__(self):
-        Estado.__init__()
+    def __init__(self, ok):
+        Estado.__init__(self, ok)
 
     def into(self):
-        pass
+        print "confirmar"
 
     def leave(self):
         pass

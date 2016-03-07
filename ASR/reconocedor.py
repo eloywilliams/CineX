@@ -1,26 +1,23 @@
-__author__ = 'leandro'
-
 from pocketsphinx.pocketsphinx import *
 import pyaudio
 import sys
 
-
 class Reconocedor(object):
 
-    def __init__(self):
+    def __init__(self, ok):
         """
             Constructor de la clase Reconocedor
         :return:
         """
 
-        self._ACOU = '/home/leandro/Descargas/voxforge-es-0.1/model_parameters/voxforge_es_sphinx.cd_cont_1500/'
-        self._DICT = '/home/leandro/Descargas/voxforge-es-0.1/etc/voxforge_es_sphinx.dic'
-        self._GRAMM = '/home/leandro/Descargas/asr-pocketsphinx-spanish/pruebas/peliculas'
+        self._ACOU = '/home/waldo/Documentos/Universidad/ProcVoz/voxforge-es-0.1/model_parameters/voxforge_es_sphinx.cd_cont_1500/'
+        self._DICT = '/home/waldo/Documentos/Universidad/ProcVoz/voxforge-es-0.1/etc/voxforge_es_sphinx.dic'
+        self._GRAMM = '/home/waldo/Documentos/Universidad/ProcVoz/asr-pocketsphinx-spanish/pruebas/peliculas'
+        self.ok = ok
 
     def generarDecoder(self):
         """
-            Genera el decoder necesario para reconocer la
-            entrada por microfono
+            Genera el decoder necesario para reconocer la entrada por microfono
         :return:
         """
         config = Decoder.default_config()
@@ -37,7 +34,7 @@ class Reconocedor(object):
 
         p = pyaudio.PyAudio()
         decoder = self.generarDecoder()
-        stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=1024)
+        stream = p.open(format=pyaudio.paInt16, channels=2, rate=16000, input=True, frames_per_buffer=1024)
         stream.start_stream()
         in_speech_bf = True
         decoder.start_utt()
@@ -46,9 +43,9 @@ class Reconocedor(object):
             if buf:
                 decoder.process_raw(buf, False, False)
                 try:
-                    if  decoder.hyp().hypstr != '':
+                    if decoder.hyp().hypstr != '':
                         pass
-                        #print 'Partial decoding result:', decoder.hyp().hypstr
+                        # print 'Partial decoding result:', decoder.hyp().hypstr
                 except AttributeError:
                     pass
                 if decoder.get_in_speech():
@@ -59,16 +56,27 @@ class Reconocedor(object):
                     if not in_speech_bf:
                         decoder.end_utt()
                         try:
-                            if  decoder.hyp().hypstr != '':
-                                return str(decoder.hyp().hypstr)
+                            if decoder.hyp().hypstr != '':
+                                self.cadena = str(decoder.hyp().hypstr)
+                                break
                         except AttributeError:
                             pass
                         decoder.start_utt()
+        self.ok.emit()
+        return self.cadena
 
     @property
     def ACOU(self):
         return self._ACOU
 
     @ACOU.setter
-    def ACOU(self,value):
+    def ACOU(self, value):
         self._ACOU = value
+
+    @property
+    def GRAMM(self):
+        return self._GRAMM
+
+    @GRAMM.setter
+    def GRAMM(self, value):
+        self._GRAMM = value

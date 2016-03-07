@@ -37,7 +37,7 @@ class Dia(Estado):
 
     def into(self):
         print "dia"
-        self.reconocedor.GRAMM = '/home/waldo/Documentos/Universidad/ProcVoz/asr-pocketsphinx-spanish/pruebas/dias'
+        self.reconocedor.GRAMM = 'VOZ/asr-pocketsphinx-spanish/pruebas/dias'
         self.cadena = self.reconocedor.obtenerEntrada()
 
     def leave(self):
@@ -52,7 +52,7 @@ class Horario(Estado):
 
     def into(self):
         print "horario"
-        self.reconocedor.GRAMM = '/home/waldo/Documentos/Universidad/ProcVoz/asr-pocketsphinx-spanish/pruebas/horarios'
+        self.reconocedor.GRAMM = 'VOZ/asr-pocketsphinx-spanish/pruebas/horarios'
         self.cadena = self.reconocedor.obtenerEntrada()
 
     def leave(self):

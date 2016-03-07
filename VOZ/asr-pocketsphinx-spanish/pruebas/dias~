@@ -1,0 +1,4 @@
+#JSGF V1.0;
+grammar pepe;
+<dia> = LUNES | MIERCOLES | VIERNES | SABADO;
+public <pepe> = <dia>;

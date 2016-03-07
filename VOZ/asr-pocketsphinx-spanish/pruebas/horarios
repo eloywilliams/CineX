@@ -1,0 +1,5 @@
+#JSGF V1.0;
+grammar pepe;
+<hora> = QUINCE | DOCE | NUEVE;
+<minutos> = TREINTA | CERO | VEINTE;
+public <pepe> = <hora> <minutos>;

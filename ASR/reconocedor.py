@@ -9,16 +9,9 @@ class Reconocedor(object):
             Constructor de la clase Reconocedor
         :return:
         """
-
-<<<<<<< HEAD
-        self._ACOU = '/home/leandro/Descargas/voxforge-es-0.1/model_parameters/voxforge_es_sphinx.cd_cont_1500/'
-        self._DICT = '/home/leandro/Descargas/voxforge-es-0.1/etc/voxforge_es_sphinx.dic'
-        self._GRAMM = '/home/leandro/Descargas/asr-pocketsphinx-spanish/pruebas/peliculas'
-=======
         self._ACOU = 'VOZ/voxforge-es-0.1/model_parameters/voxforge_es_sphinx.cd_cont_1500/'
         self._DICT = 'VOZ/voxforge-es-0.1/etc/voxforge_es_sphinx.dic'
         self._GRAMM = 'VOZ/asr-pocketsphinx-spanish/pruebas/peliculas'
->>>>>>> 6b18527125bb3dab4c51d0b1a9d08df2a3419c57
         self.ok = ok
 
     def generarDecoder(self):

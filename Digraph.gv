@@ -7,7 +7,7 @@ digraph {
 		Dia
 		Horario
 		Final [shape=doublecircle]
-			Inicio -> Pelicula [label=1]
+			Inicio -> Pelicula [label=0]
 			Pelicula -> Dia [label=0]
 			Pelicula -> Pelicula [label=1]
 			Dia -> Horario [label=1]

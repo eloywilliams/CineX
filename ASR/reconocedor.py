@@ -10,9 +10,9 @@ class Reconocedor(object):
         :return:
         """
 
-        self._ACOU = '/home/waldo/Documentos/Universidad/ProcVoz/voxforge-es-0.1/model_parameters/voxforge_es_sphinx.cd_cont_1500/'
-        self._DICT = '/home/waldo/Documentos/Universidad/ProcVoz/voxforge-es-0.1/etc/voxforge_es_sphinx.dic'
-        self._GRAMM = '/home/waldo/Documentos/Universidad/ProcVoz/asr-pocketsphinx-spanish/pruebas/peliculas'
+        self._ACOU = '/home/leandro/Descargas/voxforge-es-0.1/model_parameters/voxforge_es_sphinx.cd_cont_1500/'
+        self._DICT = '/home/leandro/Descargas/voxforge-es-0.1/etc/voxforge_es_sphinx.dic'
+        self._GRAMM = '/home/leandro/Descargas/asr-pocketsphinx-spanish/pruebas/peliculas'
         self.ok = ok
 
     def generarDecoder(self):

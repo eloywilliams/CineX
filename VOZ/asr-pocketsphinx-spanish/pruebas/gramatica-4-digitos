@@ -1,0 +1,4 @@
+#JSGF V1.0;
+grammar isolated_phrases;
+<digito> = (UNO | DOS | TRES | CUATRO | CINCO | SEIS | SIETE | OCHO | NUEVE | CERO);
+public <grammar> = <digito> <digito> <digito> <digito>;

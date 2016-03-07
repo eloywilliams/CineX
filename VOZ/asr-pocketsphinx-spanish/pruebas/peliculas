@@ -1,0 +1,4 @@
+#JSGF V1.0;
+grammar pepe;
+<pelicula> = TRUMAN | DOCE REINAS | EL PAPA;
+public <pepe> = <pelicula>;

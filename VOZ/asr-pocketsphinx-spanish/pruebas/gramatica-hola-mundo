@@ -1,0 +1,5 @@
+#JSGF V1.0;
+grammar pepe;
+<saludo> = (HOLA | BUEN DíA | BUENOS DíAS);
+<destinatario> = (MUNDO | ARGENTINA | UNIVERSIDAD);
+public <grammar> = <saludo> <destinatario>;
